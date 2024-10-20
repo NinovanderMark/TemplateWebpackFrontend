@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  devtool: "source-map",
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "./build"),
@@ -21,25 +20,6 @@ module.exports = {
         use: "ts-loader",
       }
     ],
-  },
-  watchOptions: {
-      ignored: /node_modules/,
-  },
-  devServer: {
-      compress: false,
-      static: false,
-      client: {
-          logging: "warn",
-          overlay: {
-              errors: true,
-              warnings: false
-          },
-          progress: true
-      },
-      port: 1234, host: "127.0.0.1",
-      devMiddleware: {
-        writeToDisk: true,
-      },
   },
   plugins: [
     new CleanWebpackPlugin(),
